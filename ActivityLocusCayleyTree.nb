@@ -1,0 +1,416 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     16958,        408]
+NotebookOptionsPosition[     15011,        377]
+NotebookOutlinePosition[     15413,        393]
+CellTagsIndexPosition[     15370,        390]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+This is an example of the code used to plot the activity locus and zeros. In \
+this example, we examine Cayley trees with down-degree 2 and length 10 000.\
+\>", "Text",
+ CellChangeTimes->{{3.8337051981576667`*^9, 
+  3.8337052729295645`*^9}},ExpressionUUID->"038dba86-3b3d-47e1-9d18-\
+ea1b95ee8f92"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"iterations", "=", "10000"}], ";"}], " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"degree", "=", "2"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"func", "[", "l_", "]"}], ":=", 
+  RowBox[{"Nest", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"l", "/", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1", "+", "#"}], ")"}], "^", "degree"}], ")"}]}], "&"}], ",",
+     " ", "0", ",", " ", "iterations"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"SetDirectory", "[", 
+  RowBox[{"NotebookDirectory", "[", "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.8199736311066904`*^9, 3.8199736315803757`*^9}, 
+   3.819973996666154*^9, {3.832861112055514*^9, 3.832861113728588*^9}, {
+   3.8328611891051016`*^9, 3.8328612361136084`*^9}, {3.8328612795380588`*^9, 
+   3.832861286581455*^9}, {3.8328615268815107`*^9, 3.8328615274617715`*^9}, {
+   3.833422761322358*^9, 3.833422789995236*^9}, {3.833453495992779*^9, 
+   3.833453496366689*^9}, {3.833473126616743*^9, 3.833473127336959*^9}, {
+   3.833505976557538*^9, 3.833505977247079*^9}, {3.8335396905040164`*^9, 
+   3.833539690629041*^9}, {3.8335643941493597`*^9, 3.833564394524288*^9}, {
+   3.8337043277497396`*^9, 3.8337043429992065`*^9}, {3.833704864201519*^9, 
+   3.833704864685748*^9}},ExpressionUUID->"2e6a6c0e-8e3a-4066-929d-\
+264132530b75"],
+
+Cell["\<\
+To guarantee that numbers are saved as numbers, we will work with integer \
+representations of x and y until the very end. x=27 will in fact mean x = \
+0.27 (in this instance). Higher resolution can be achieved by changing the \
+values for x, y and their respective scaling factors. For example, to get ten \
+times as many points along the x axis, take 0.001*x and {x, -4100, 4100}.  \
+Adjust the range of x and y according to the range of their activity locus \
+(these differ for different values of the down-degree). The range can also be \
+adjusted in order to zoom in on certain areas of the activity locus.\
+\>", "Text",
+ CellChangeTimes->{{3.8201549280844955`*^9, 3.820154987343705*^9}, {
+  3.8337044125025735`*^9, 3.833704550111929*^9}, {3.833704800960233*^9, 
+  3.8337048546646676`*^9}, {3.833705157773602*^9, 
+  3.833705184991505*^9}},ExpressionUUID->"f4d1c6ff-eb51-4cb7-add4-\
+36581fb85934"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"data", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"x", ",", "y", ",", 
+         RowBox[{"N", "[", 
+          RowBox[{
+           RowBox[{"func", "[", 
+            RowBox[{
+             RowBox[{"0.01", "*", "x"}], "+", 
+             RowBox[{"0.01", "*", "y", "*", "I"}]}], "]"}], ",", "6"}], 
+          "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"y", ",", "0", ",", "410"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", 
+         RowBox[{"-", "410"}], ",", "410"}], "}"}]}], "]"}], ",", "1"}], 
+    "]"}]}], ";", 
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<graad2data.dat\>\"", ",", "data"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.8199731469381666`*^9, 3.8199731471455803`*^9}, {
+   3.81997391257152*^9, 3.8199739308552446`*^9}, {3.82015446114555*^9, 
+   3.820154499503866*^9}, 3.8201548974598446`*^9, {3.820165788753024*^9, 
+   3.8201657930470037`*^9}, {3.8201658453554497`*^9, 3.820165853541913*^9}, {
+   3.820221523556858*^9, 3.8202215423934603`*^9}, 3.820221577143981*^9, {
+   3.820221611698784*^9, 3.820221612268259*^9}, 3.8202516709627156`*^9, {
+   3.8328616440128765`*^9, 3.8328616444528384`*^9}, {3.8328616890569377`*^9, 
+   3.8328617096192894`*^9}, {3.8328617436525383`*^9, 
+   3.8328617438087564`*^9}, {3.8328625917539077`*^9, 3.832862600345168*^9}, {
+   3.8334228243096757`*^9, 3.8334228314656153`*^9}},
+ CellLabel->"In[13]:=",ExpressionUUID->"c6930f57-53d3-4015-9d87-f2ca218e42e9"],
+
+Cell["\<\
+In the next line, make sure that factors all factors 100 are adjusted to \
+comply with the scaling used above. Always leave out the last point on the x \
+axis, as there is no data with x+1 in that case.\
+\>", "Text",
+ CellChangeTimes->{{3.833704628814472*^9, 3.833704710124848*^9}, 
+   3.8337076096420884`*^9},ExpressionUUID->"e2cfa195-ab33-4474-8615-\
+b35e4295d33b"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"diff", "[", 
+   RowBox[{"z_", ",", "w_"}], "]"}], ":=", 
+  RowBox[{"100", "*", 
+   RowBox[{"N", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Abs", "[", 
+       RowBox[{"z", "-", "w"}], "]"}], "/", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1", "+", 
+          RowBox[{"Abs", "[", "z", "]"}]}], ")"}], "*", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", 
+          RowBox[{"Abs", "[", "w", "]"}]}], ")"}]}], ")"}]}], ",", "2"}], 
+    "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"Timing", "[", 
+  RowBox[{
+   RowBox[{"diffdata", "=", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"x", "/", "100"}], ",", 
+          RowBox[{"y", "/", "100"}], ",", 
+          RowBox[{"diff", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Cases", "[", 
+              RowBox[{"data", ",", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"x", ",", "y", ",", "z_"}], "}"}], "\[RuleDelayed]", 
+                " ", "z"}]}], "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}], ",", 
+            RowBox[{
+             RowBox[{"Cases", "[", 
+              RowBox[{"data", ",", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"x", "+", "1"}], ",", "y", ",", "z_"}], "}"}], 
+                "\[RuleDelayed]", " ", "z"}]}], "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", 
+          RowBox[{"-", "410"}], ",", "409"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"y", ",", "0", ",", "410"}], "}"}]}], "]"}], ",", "1"}], 
+     "]"}]}], ";"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.820074196520466*^9, 3.8200742133841705`*^9}, {
+   3.820074244154787*^9, 3.8200742515479016`*^9}, {3.8200742852154837`*^9, 
+   3.8200742949783263`*^9}, {3.820074891093796*^9, 3.820074891347196*^9}, {
+   3.8201547771227508`*^9, 3.820154805223732*^9}, 3.8201550820088296`*^9, {
+   3.820227381969906*^9, 3.820227392852578*^9}, {3.8328634118083677`*^9, 
+   3.8328634119159365`*^9}, {3.832863634020017*^9, 3.832863638699391*^9}, {
+   3.8331812520610175`*^9, 3.8331812901857357`*^9}, {3.83342284313992*^9, 
+   3.8334228520020466`*^9}, {3.8337046151867733`*^9, 
+   3.8337046209815316`*^9}, {3.833704714136956*^9, 
+   3.83370472462883*^9}},ExpressionUUID->"8f092351-2f0e-433f-8ca9-\
+9fb54368eb1a"],
+
+Cell["\<\
+Conjugate the data as the activity locus in the upper half plane and the \
+lower half plan should be identical.\
+\>", "Text",
+ CellChangeTimes->{{3.833704742780405*^9, 
+  3.833704776092614*^9}},ExpressionUUID->"7cf8a0ff-29cf-43d4-9ed8-\
+bf49ad243942"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"conjugate", "[", 
+   RowBox[{"{", 
+    RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{"x", ",", 
+    RowBox[{"-", "y"}], ",", "z"}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"mirrordiffdata", "=", 
+   RowBox[{"conjugate", "/@", "diffdata"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fulldiffdata", "=", 
+   RowBox[{"Sort", "[", 
+    RowBox[{"DeleteDuplicates", "[", 
+     RowBox[{"Join", "[", 
+      RowBox[{"diffdata", ",", "mirrordiffdata"}], "]"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<graad2diffdata.dat\>\"", ",", "fulldiffdata"}], "]"}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.8199732293527927`*^9, 3.8199733135181*^9}, {
+  3.8199733478201914`*^9, 3.81997336301478*^9}, {3.8199739504962997`*^9, 
+  3.819973951297781*^9}, {3.8199740227822237`*^9, 3.8199740355888104`*^9}, {
+  3.8200749024501*^9, 3.8200749570966063`*^9}, {3.8200765817309327`*^9, 
+  3.8200765843534*^9}, {3.8328627424067554`*^9, 3.832862742832943*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"f59a6f52-e2bc-4dda-9acd-8927a9855ad5"],
+
+Cell["Now we can plot the activity locus.", "Text",
+ CellChangeTimes->{{3.833704872029931*^9, 
+  3.8337048798249426`*^9}},ExpressionUUID->"056f7f0b-7680-4ddf-995f-\
+8f4a6f0643be"],
+
+Cell[BoxData[{
+ RowBox[{"activitylocus", "=", 
+  RowBox[{"ListDensityPlot", "[", 
+   RowBox[{"fulldiffdata", ",", "\[IndentingNewLine]", 
+    RowBox[{"Mesh", "\[Rule]", "None"}], ",", 
+    RowBox[{"InterpolationOrder", "\[Rule]", "0"}], ",", 
+    RowBox[{"AspectRatio", "\[Rule]", "Automatic"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<graad2activity.png\>\"", ",", "activitylocus"}], "]"}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.819974041254916*^9, 3.8199740524480953`*^9}, {
+   3.8200753537339315`*^9, 3.8200753555391216`*^9}, {3.832862745432356*^9, 
+   3.832862745623192*^9}, {3.8334241731736484`*^9, 3.8334242161075425`*^9}, 
+   3.833424266111037*^9},
+ CellLabel->"In[23]:=",ExpressionUUID->"3d0b01a2-741c-47db-9c56-8cb7519fb4dd"],
+
+Cell["\<\
+Now we will take a look at all values with small derivatives, these areas \
+could be the locations of zeros. Note that we will not find all zeros. Using \
+a better resolution and better numerical approximations are ways to include \
+more zeros .\
+\>", "Text",
+ CellChangeTimes->{{3.832910238169653*^9, 3.832910259742515*^9}, {
+  3.8337050253574233`*^9, 3.8337050429519253`*^9}, {3.8337057854641333`*^9, 
+  3.833705846196945*^9}},ExpressionUUID->"a19258df-f7a0-41ae-9f3c-\
+58359e274348"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"express", "[", 
+   RowBox[{"{", 
+    RowBox[{"x_", ",", "y_", ",", "z_"}], "}"}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"ToExpression", "[", "x", "]"}], ",", 
+    RowBox[{"ToExpression", "[", "y", "]"}], ",", 
+    RowBox[{"ToExpression", "[", "z", "]"}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fulldiffdata", "=", 
+   RowBox[{"express", " ", "/@", " ", 
+    RowBox[{"Import", "[", 
+     RowBox[{"\"\<graad2diffdata.dat\>\"", ",", " ", "\"\<table\>\""}], 
+     "]"}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.8329071758213863`*^9, 3.832907195638583*^9}, {
+   3.8329072628925643`*^9, 3.8329072872872925`*^9}, {3.832910307751194*^9, 
+   3.832910335035263*^9}, 3.8334228713726587`*^9},
+ CellLabel->"In[25]:=",ExpressionUUID->"03642c53-449c-4bfd-8ee7-162ccf1ce517"],
+
+Cell["\<\
+Adjust the value 0.0001 to get more/less points where the derivative is small.\
+\>", "Text",
+ CellChangeTimes->{{3.833705049010606*^9, 
+  3.8337050717372303`*^9}},ExpressionUUID->"acdc933b-eb44-419a-abd7-\
+aaf0383c2eee"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"smalldiffs", "[", 
+   RowBox[{"{", 
+    RowBox[{"x_", ",", " ", "y_", ",", " ", "z_"}], "}"}], "]"}], ":=", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Abs", "[", "z", "]"}], "<", "0.0001"}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", " ", "y", ",", " ", "z"}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"smalldiffsdata", "=", 
+   RowBox[{"smalldiffs", " ", "/@", " ", "fulldiffdata"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<graad2smalldiffsdata.dat\>\"", ",", " ", "smalldiffsdata"}], 
+   "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.8329068707456937`*^9, 3.8329069067086077`*^9}, {
+   3.832906936757564*^9, 3.832906962350338*^9}, {3.832907014006076*^9, 
+   3.8329071507119923`*^9}, 3.833422894442378*^9},
+ CellLabel->"In[27]:=",ExpressionUUID->"aa1c2ad6-6705-4dd7-ae81-6815f66a208c"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"coordinates", "[", 
+   RowBox[{"{", 
+    RowBox[{"x_", ",", " ", "y_", ",", " ", "z_"}], "}"}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{"x", ",", " ", "y"}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"coordsmalldiffsdata", "=", 
+   RowBox[{"coordinates", " ", "/@", " ", 
+    RowBox[{"(", 
+     RowBox[{"express", " ", "/@", " ", 
+      RowBox[{"Import", "[", 
+       RowBox[{
+       "\"\<graad2smalldiffsdata.dat\>\"", ",", " ", "\"\<table\>\"", ",", 
+        " ", 
+        RowBox[{"\"\<IgnoreEmptyLines\>\"", "\[Rule]", "True"}]}], "]"}]}], 
+     ")"}]}]}], " ", ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{
+   "\"\<graad2coordsmalldiffsdata.dat\>\"", ",", " ", "coordsmalldiffsdata"}],
+    "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.832907759519513*^9, 3.8329078622637467`*^9}, {
+  3.832908203604206*^9, 3.8329082357321053`*^9}, {3.832909533806995*^9, 
+  3.8329095381766896`*^9}, {3.8329104256897173`*^9, 3.832910442842978*^9}},
+ CellLabel->"In[30]:=",ExpressionUUID->"d1f11c1a-75ab-45c2-b9db-09f71c79b3dd"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"plotsmalldiffs", "=", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{
+     RowBox[{"Style", "[", 
+      RowBox[{"coordsmalldiffsdata", ",", " ", "Green"}], "]"}], ",", " ", 
+     RowBox[{"AspectRatio", "\[Rule]", "Automatic"}]}], " ", "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.83344696833746*^9, 3.8334470187556896`*^9}, 
+   3.833447092100069*^9, {3.8334473062643657`*^9, 3.833447314516425*^9}, {
+   3.8334473887852077`*^9, 3.833447406283347*^9}, {3.833705007946504*^9, 
+   3.833705008808216*^9}, 
+   3.8337050802305655`*^9},ExpressionUUID->"b0ea1e42-dedc-4e68-95e9-\
+7de071c794ae"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"bothin1plot2", "=", 
+   RowBox[{"Show", "[", 
+    RowBox[{"activitylocus", ",", " ", "plotsmalldiffs", ",", " ", 
+     RowBox[{"PlotRange", "\[Rule]", " ", "All"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{
+   "\"\<graad2activitylocuspluszeros.png\>\"", ",", " ", "bothin1plot2"}], 
+   "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.8334474255549126`*^9, 3.833447429251237*^9}, {
+  3.8337049971907578`*^9, 
+  3.833705011172194*^9}},ExpressionUUID->"2563dc99-6b52-4737-9c1c-\
+79b2538f528a"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.8334483747664137`*^9, 3.8334483921614513`*^9}, 
+   3.833704995955402*^9},ExpressionUUID->"ac5b460b-931c-42d4-8aa7-\
+7b32c5a87659"]
+},
+WindowSize->{960, 478},
+WindowMargins->{{-5.5, Automatic}, {Automatic, -5.5}},
+FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"d414bc64-ce9f-42ce-9756-35ae3af4ac30"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 308, 6, 56, "Text",ExpressionUUID->"038dba86-3b3d-47e1-9d18-ea1b95ee8f92"],
+Cell[869, 28, 1371, 29, 87, "Input",ExpressionUUID->"2e6a6c0e-8e3a-4066-929d-264132530b75"],
+Cell[2243, 59, 911, 14, 122, "Text",ExpressionUUID->"f4d1c6ff-eb51-4cb7-add4-36581fb85934"],
+Cell[3157, 75, 1549, 34, 48, "Input",ExpressionUUID->"c6930f57-53d3-4015-9d87-f2ca218e42e9"],
+Cell[4709, 111, 377, 7, 56, "Text",ExpressionUUID->"e2cfa195-ab33-4474-8615-b35e4295d33b"],
+Cell[5089, 120, 2527, 65, 87, "Input",ExpressionUUID->"8f092351-2f0e-433f-8ca9-9fb54368eb1a"],
+Cell[7619, 187, 261, 6, 34, "Text",ExpressionUUID->"7cf8a0ff-29cf-43d4-9ed8-bf49ad243942"],
+Cell[7883, 195, 1171, 27, 87, "Input",ExpressionUUID->"f59a6f52-e2bc-4dda-9acd-8927a9855ad5"],
+Cell[9057, 224, 179, 3, 34, "Text",ExpressionUUID->"056f7f0b-7680-4ddf-995f-8f4a6f0643be"],
+Cell[9239, 229, 790, 16, 68, "Input",ExpressionUUID->"3d0b01a2-741c-47db-9c56-8cb7519fb4dd"],
+Cell[10032, 247, 496, 9, 56, "Text",ExpressionUUID->"a19258df-f7a0-41ae-9f3c-58359e274348"],
+Cell[10531, 258, 832, 19, 48, "Input",ExpressionUUID->"03642c53-449c-4bfd-8ee7-162ccf1ce517"],
+Cell[11366, 279, 230, 5, 34, "Text",ExpressionUUID->"acdc933b-eb44-419a-abd7-aaf0383c2eee"],
+Cell[11599, 286, 924, 23, 68, "Input",ExpressionUUID->"aa1c2ad6-6705-4dd7-ae81-6815f66a208c"],
+Cell[12526, 311, 1096, 26, 87, "Input",ExpressionUUID->"d1f11c1a-75ab-45c2-b9db-09f71c79b3dd"],
+Cell[13625, 339, 621, 14, 28, "Input",ExpressionUUID->"b0ea1e42-dedc-4e68-95e9-7de071c794ae"],
+Cell[14249, 355, 576, 15, 48, "Input",ExpressionUUID->"2563dc99-6b52-4737-9c1c-79b2538f528a"],
+Cell[14828, 372, 179, 3, 28, "Input",ExpressionUUID->"ac5b460b-931c-42d4-8aa7-7b32c5a87659"]
+}
+]
+*)
+
