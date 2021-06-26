@@ -1,4 +1,4 @@
-# activity-locus-ratio-cayley-tree
+# Activity locus of the occupation ratio on Cayley trees
 
 This Mathematica notebook provides a way to approximate the activity locus for Cayley trees.
 Furthermore, it provides a way of finding the possible locations of points for which the spherical derivative tends to zero.
